@@ -1,4 +1,9 @@
-import * as React from 'react';
+/** @jsxImportSource @emotion/react */
+// option 2: emotion/react with jsx pragma and jsxFrag pragma
+// for adding jsx prgma read: https://emotion.sh/docs/css-prop#jsx-pragma
+// https://stackoverflow.com/questions/66965774/emotion-css-prop-and-nextjs-new-jsx-runtime-error-pragma-and-pragmafrag-canno
+// https://emotion.sh/docs/typescript#css-prop
+import { jsx, css } from '@emotion/react'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 import Typography from '@mui/material/Typography';
 
@@ -10,11 +15,21 @@ function LightBulbIcon(props: SvgIconProps) {
   );
 }
 
+const divStyle = css({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center'
+})
+
 export default function ProTip() {
   return (
-    <Typography sx={{ mt: 6, mb: 3 }} color="text.secondary">
-      <LightBulbIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
-      Pro tip: sleep more.
-    </Typography>
+    <div css={divStyle}>
+      <div css={{ background: '#7E1946', padding: '0.5rem', borderRadius: '0.2rem', width: 'fit-content', marginTop: '1rem' }}>
+        <Typography sx={{ m: 1, p: 1 }} color="#0D0106" css={{ background: '#EEAAC9', borderRadius: '0.2rem' }}>
+          <LightBulbIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
+          Pro tip: sleep more.
+        </Typography>
+      </div>
+    </div>
   );
 }

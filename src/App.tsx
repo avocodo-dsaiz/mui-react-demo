@@ -1,7 +1,5 @@
-import './App.css';
 import * as React from 'react';
-import { BrowserRouter, Route, Routes, useLocation, Navigate, NavLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 
 import Copyright from './components/Copyright/Copyright';
 import Header from './components/Header/Header';
@@ -20,13 +18,14 @@ import { Box } from '@mui/system';
 
 import styled from '@emotion/styled'
 
-const Link = styled(NavLink)({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  textDecoration: 'none'
-})
+const Link = styled(NavLink)(
+  {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textDecoration: 'none',
+}, props=>({color: props.color ? props.color : 'black'}))
 
 
 // const linkStyle = css({
@@ -43,7 +42,6 @@ const Link = styled(NavLink)({
 // `;
 
 
-
 const Navigation = () => {
   return <>
     <Stack
@@ -52,9 +50,9 @@ const Navigation = () => {
         spacing={2}
       >
       <Link to="home"><HomeIcon /><div>Basic</div></Link>
-      <Link to="anchor"><AnchorIcon /><div>Styled</div></Link>
-      <Link to="foo"><AutoFixHighIcon /><div>Styled with Props</div></Link>
-      <Link to="flutter"><FlutterDashIcon /><div>Styled with Theme</div></Link>
+      <Link to="anchor" color="pink"><AnchorIcon /><div>Styled</div></Link>
+      <Link to="foo" color="lightgreen"><AutoFixHighIcon /><div>Styled with Props</div></Link>
+      <Link to="flutter" color="skyblue"><FlutterDashIcon /><div>Styled with Theme</div></Link>
     </Stack>
   </>;
 }
